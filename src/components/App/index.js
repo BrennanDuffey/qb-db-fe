@@ -1,7 +1,8 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import SplashPage from '../SplashPage'
-import Controls from '../../containers/Controls'
+import SplashPage from '../SplashPage';
+import Controls from '../../containers/Controls';
+import QuizContainer from '../../containers/QuizContainer';
 
 
 
@@ -21,7 +22,7 @@ const grabTossups = async () => {
     <main className="">
       <Route exact path='/' component={SplashPage} />
       <Route exact path='/Controls' component={Controls} />
-      <Route exact path='/Quiz' component={Controls} />
+      <Route exact path='/Quiz' component={QuizContainer} />
       <Route exact path='/Study' component={Controls} />
       <button onClick={grabTossups}>Stuff </button>
     </main>

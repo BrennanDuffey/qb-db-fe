@@ -5,4 +5,4 @@ export const setTossups = (tossups) => ({
 
 export const toggleLoading = () => ({
   type: 'TOGGLE_LOADING'
-})
+});

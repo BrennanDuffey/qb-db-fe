@@ -104,8 +104,6 @@ class Controls extends Component {
   };
 };
 
-//need to add actions for MDTP
-
 export const mapDispatchToProps = (dispatch) => ({
   setTossups: (tossups) => dispatch(setTossups(tossups)),
   toggleLoading: () => dispatch(toggleLoading())
