@@ -6,14 +6,20 @@ class Controls extends Component {
   constructor() {
     super();
     this.state = {
-      selectedCategories: []
+      selectedCategories: [],
+      count: 15
     };
   };
 
   selectCategories = (selectedOptions) => {
-    const selectedCategories = selectedOptions.map(option => `${option.value}`)
-    this.setState({ selectedCategories })
-  }
+    const selectedCategories = selectedOptions.map(option => `${option.value}`);
+    this.setState({ selectedCategories });
+  };
+
+  setCount = (e) => {
+    e.persist();
+    this.setState({ count: e.target.value });
+  };
 
   render() {
     const categories = [
@@ -39,6 +45,14 @@ class Controls extends Component {
             </div>
             <div className="col-md-4"></div>
           </div>
+        </div>
+        <div>
+          <label htmlFor="count">Select A Number of Questions</label>
+          <input name="count" type="number" placeholder="default of 15" onChange={(e) => {this.setCount(e)}}/>
+        </div>
+        <div>
+          <button>Quiz!</button>
+          <button>Study!</button>
         </div>
       </section>
     )
