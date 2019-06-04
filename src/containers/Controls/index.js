@@ -26,7 +26,8 @@ class Controls extends Component {
     this.state = {
       selectedCategories: [],
       count: 15,
-      redirect: ''
+      redirect: '',
+      errorMessage: ''
     };
   };
 
@@ -64,8 +65,7 @@ class Controls extends Component {
       console.log(e.target)
       await this.setState({ redirect: e.target.name })
     } catch(error) {
-      //hasErrored
-      //toggleLoading
+      this.setState({ errorMessage: error.message})
     }
   }
 
@@ -110,8 +110,7 @@ class Controls extends Component {
 
 export const mapDispatchToProps = (dispatch) => ({
   setTossups: (tossups) => dispatch(setTossups(tossups)),
-  toggleLoading: () => dispatch(),
-  setError: (errorMessage) => dispatch(errorMessage)
+  toggleLoading: () => dispatch()
 });
 
 export default connect(null, mapDispatchToProps)(Controls);
