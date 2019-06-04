@@ -21,7 +21,8 @@ const grabTossups = async () => {
     <main className="">
       <Route exact path='/' component={SplashPage} />
       <Route exact path='/Controls' component={Controls} />
-
+      <Route exact path='/Quiz' component={Controls} />
+      <Route exact path='/Study' component={Controls} />
       <button onClick={grabTossups}>Stuff </button>
     </main>
   );

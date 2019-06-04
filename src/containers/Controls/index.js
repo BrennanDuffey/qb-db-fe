@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Select from 'react-select';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { connect } from 'react-redux';
+import { Redirect } from "react-router-dom";
 import fetchWithOptions from '../../utils/apiCalls/fetchWithOptions';
 import fetchWithCount from '../../utils/apiCalls/fetchWithCount';
 import { setTossups } from '../../actions'
@@ -24,7 +25,8 @@ class Controls extends Component {
     super();
     this.state = {
       selectedCategories: [],
-      count: 15
+      count: 15,
+      redirect: ''
     };
   };
 
@@ -46,6 +48,7 @@ class Controls extends Component {
 
   fetchTossups = async (e) => {
     e.preventDefault();
+    e.persist();
     try {
       //toggleLoading
       const { count, selectedCategories } = this.state;
@@ -58,6 +61,8 @@ class Controls extends Component {
       await this.props.setTossups(result.tossups);
       //setTossups
       //toggleLoading
+      console.log(e.target)
+      await this.setState({ redirect: e.target.name })
     } catch(error) {
       //hasErrored
       //toggleLoading
@@ -65,6 +70,11 @@ class Controls extends Component {
   }
 
   render() {
+
+    if (this.state.redirect) {
+      const route = `/${this.state.redirect}`;
+      return <Redirect to={route}/>
+    }
 
     return (
       <section>
@@ -82,8 +92,14 @@ class Controls extends Component {
           <input name="count" type="number" placeholder=" Default of 15" onChange={(e) => {this.setCount(e)}}/>
         </div>
         <div>
-          <button onClick={ (e) => {this.fetchTossups(e)} }>Quiz!</button>
-          <button onClick={ (e) => {this.fetchTossups(e)} }>Study!</button>
+          <button 
+            onClick={ (e) => {this.fetchTossups(e)} }
+            name="Quiz"
+          >Quiz!</button>
+          <button 
+            onClick={ (e) => {this.fetchTossups(e)} }
+            name="Study"
+          >Study!</button>
         </div>
       </section>
     )
