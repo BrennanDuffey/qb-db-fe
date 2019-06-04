@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Select from 'react-select';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { connect } from 'react-redux';
+import fetchWithOptions from '../../utils/apiCalls/fetchWithOptions';
+import fetchWithCount from '../../utils/apiCalls/fetchWithCount';
 
 const categories = [
   { label: 'Geography', value: 20 },
@@ -39,12 +41,15 @@ class Controls extends Component {
   fetchTossups = async () => {
     try {
       //toggleLoading
-      const { count, selectedCategories } = this.state
+      const { count, selectedCategories } = this.state;
+      let result;
       if (selectedCategories.length) {
-        const result = await fetchWithOptions(count, selectedCategories);
+        result = await fetchWithOptions(count, selectedCategories);
       } else {
-        const result = await fetchWithCount(count);
+        result = await fetchWithCount(count);
       }
+      //setTossups
+      //toggleLoading
     } catch(error) {
       //hasErrored
       //toggleLoading
