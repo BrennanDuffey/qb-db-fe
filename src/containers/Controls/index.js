@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { Redirect } from "react-router-dom";
 import fetchWithOptions from '../../utils/apiCalls/fetchWithOptions';
 import fetchWithCount from '../../utils/apiCalls/fetchWithCount';
-import { setTossups } from '../../actions'
+import { setTossups, toggleLoading } from '../../actions'
 
 const categories = [
   { label: 'Geography', value: 20 },
@@ -51,7 +51,7 @@ class Controls extends Component {
     e.preventDefault();
     e.persist();
     try {
-      //toggleLoading
+      await this.props.toggleLoading();
       const { count, selectedCategories } = this.state;
       let result;
       if (selectedCategories.length) {
@@ -60,9 +60,7 @@ class Controls extends Component {
         result = await fetchWithCount(count);
       }
       await this.props.setTossups(result.tossups);
-      //setTossups
-      //toggleLoading
-      console.log(e.target)
+      await this.props.toggleLoading();
       await this.setState({ redirect: e.target.name })
     } catch(error) {
       this.setState({ errorMessage: error.message})
@@ -110,7 +108,7 @@ class Controls extends Component {
 
 export const mapDispatchToProps = (dispatch) => ({
   setTossups: (tossups) => dispatch(setTossups(tossups)),
-  toggleLoading: () => dispatch()
+  toggleLoading: () => dispatch(toggleLoading())
 });
 
 export default connect(null, mapDispatchToProps)(Controls);

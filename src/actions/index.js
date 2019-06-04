@@ -3,4 +3,6 @@ export const setTossups = (tossups) => ({
   tossups
 });
 
-export const 
+export const toggleLoading = () => ({
+  type: 'TOGGLE_LOADING'
+})
