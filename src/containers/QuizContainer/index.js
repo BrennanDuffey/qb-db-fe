@@ -12,9 +12,10 @@ class QuizContainer extends Component {
     }
   }
 
-  incrementCounter = () => {
-    const questionCounter = this.state.questionCounter++
-    this.setState({ questionCounter })
+  incrementCounter = async () => {
+    const questionCounter = this.state.questionCounter + 1;
+    await this.setState({ questionCounter });
+    this.toggleDisplay();
   }
 
   toggleDisplay = () => {
@@ -23,21 +24,17 @@ class QuizContainer extends Component {
 
 
   render() {
-    if (!this.props.tossups.length) {
-      return <Redirect to={'/Controls'}/>
-    }
     const { tossups } = this.props
     const { displayAnswer, questionCounter } = this.state
+    if (!tossups.length || tossups.length === questionCounter) {
+      return <Redirect to={'/Controls'}/>
+    }
     return (
       <section>
         {!displayAnswer && <p>{tossups[questionCounter].text}</p>}
         {!displayAnswer && <h3 onClick={this.toggleDisplay}>Show Answer </h3>}
         {displayAnswer && <p>{tossups[questionCounter].answer}</p>}
-        {
-          displayAnswer && <h3 onClick={() => {
-          this.toggleDisplay()
-          this.incrementCounter()
-          }}>Next Question</h3>
+        {displayAnswer && <h3 onClick={() => {this.incrementCounter()}}>Next Question</h3>
         }
 
       </section>
