@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import SplashPage from '../SplashPage/'
+import SplashPage from '../SplashPage'
+import Controls from '../../containers/Controls'
 
 
 
@@ -18,8 +19,8 @@ const grabTossups = async () => {
 
   return (
     <main className="">
-      <Route exact to ='/' component={SplashPage} />
-      <Route exact to ='/Controls' component={Controls} />
+      <Route exact path='/' component={SplashPage} />
+      <Route exact path='/Controls' component={Controls} />
 
       <button onClick={grabTossups}>Stuff </button>
     </main>
