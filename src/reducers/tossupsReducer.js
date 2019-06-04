@@ -1,9 +1,9 @@
 const tossupsReducer = (state = [], action) => {
   switch(action.type) {
     case 'SET_TOSSUPS':
-      return action.tossups;
+      return action.tossups
     default:
-      return state;
+      return state
   }
 }
 

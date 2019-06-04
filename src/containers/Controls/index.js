@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { connect } from 'react-redux';
 import fetchWithOptions from '../../utils/apiCalls/fetchWithOptions';
 import fetchWithCount from '../../utils/apiCalls/fetchWithCount';
+import { setTossups } from '../../actions'
 
 const categories = [
   { label: 'Geography', value: 20 },
@@ -54,7 +55,7 @@ class Controls extends Component {
       } else {
         result = await fetchWithCount(count);
       }
-      console.log(result)
+      await this.props.setTossups(result.tossups);
       //setTossups
       //toggleLoading
     } catch(error) {
@@ -92,9 +93,9 @@ class Controls extends Component {
 //need to add actions for MDTP
 
 export const mapDispatchToProps = (dispatch) => ({
-  setTossups: (tossups) => dispatch(tossups),
+  setTossups: (tossups) => dispatch(setTossups(tossups)),
   toggleLoading: () => dispatch(),
   setError: (errorMessage) => dispatch(errorMessage)
 });
 
-export default connect(null)(Controls);
+export default connect(null, mapDispatchToProps)(Controls);
