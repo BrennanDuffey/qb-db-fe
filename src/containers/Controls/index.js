@@ -28,7 +28,12 @@ class Controls extends Component {
   };
 
   selectCategories = (selectedOptions) => {
-    const selectedCategories = selectedOptions.map(option => `${option.value}`);
+    let selectedCategories;
+    if (selectedOptions) {
+      selectedCategories = selectedOptions.map(option => `${option.value}`);
+    } else {
+      selectedCategories = []
+    }
     this.setState({ selectedCategories });
   };
 
@@ -38,7 +43,8 @@ class Controls extends Component {
   };
 
 
-  fetchTossups = async () => {
+  fetchTossups = async (e) => {
+    e.preventDefault();
     try {
       //toggleLoading
       const { count, selectedCategories } = this.state;
@@ -48,6 +54,7 @@ class Controls extends Component {
       } else {
         result = await fetchWithCount(count);
       }
+      console.log(result)
       //setTossups
       //toggleLoading
     } catch(error) {
@@ -74,8 +81,8 @@ class Controls extends Component {
           <input name="count" type="number" placeholder=" Default of 15" onChange={(e) => {this.setCount(e)}}/>
         </div>
         <div>
-          <button>Quiz!</button>
-          <button>Study!</button>
+          <button onClick={ (e) => {this.fetchTossups(e)} }>Quiz!</button>
+          <button onClick={ (e) => {this.fetchTossups(e)} }>Study!</button>
         </div>
       </section>
     )
