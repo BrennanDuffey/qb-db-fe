@@ -1,6 +1,20 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { connect } from 'react-redux';
+
+const categories = [
+  { label: 'Geography', value: 20 },
+  { label: 'History', value: 18 },
+  { label: 'Science', value: 17 },
+  { label: 'Literature', value: 15 },
+  { label: 'Fine Arts', value: 21 },
+  { label: 'Religion', value: 19 },
+  { label: 'Mythology', value: 14 },
+  { label: 'Philosophy', value: 25 },
+  { label: 'Current Events', value: 26 },
+  { label: 'Social Science', value: 22 }
+];
 
 class Controls extends Component {
   constructor() {
@@ -21,19 +35,23 @@ class Controls extends Component {
     this.setState({ count: e.target.value });
   };
 
+
+  fetchTossups = async () => {
+    try {
+      //toggleLoading
+      const { count, selectedCategories } = this.state
+      if (selectedCategories.length) {
+        const result = await fetchWithOptions(count, selectedCategories);
+      } else {
+        const result = await fetchWithCount(count);
+      }
+    } catch(error) {
+      //hasErrored
+      //toggleLoading
+    }
+  }
+
   render() {
-    const categories = [
-      { label: 'Geography', value: 20 },
-      { label: 'History', value: 18 },
-      { label: 'Science', value: 17 },
-      { label: 'Literature', value: 15 },
-      { label: 'Fine Arts', value: 21 },
-      { label: 'Religion', value: 19 },
-      { label: 'Mythology', value: 14 },
-      { label: 'Philosophy', value: 25 },
-      { label: 'Current Events', value: 26 },
-      { label: 'Social Science', value: 22 }
-    ];
 
     return (
       <section>
@@ -48,7 +66,7 @@ class Controls extends Component {
         </div>
         <div>
           <label htmlFor="count">Select A Number of Questions</label>
-          <input name="count" type="number" placeholder="default of 15" onChange={(e) => {this.setCount(e)}}/>
+          <input name="count" type="number" placeholder=" Default of 15" onChange={(e) => {this.setCount(e)}}/>
         </div>
         <div>
           <button>Quiz!</button>
@@ -59,4 +77,12 @@ class Controls extends Component {
   };
 };
 
-export default Controls;
+//need to add actions for MDTP
+
+export const mapDispatchToProps = (dispatch) => ({
+  setTossups: (tossups) => dispatch(tossups),
+  toggleLoading: () => dispatch(),
+  setError: (errorMessage) => dispatch(errorMessage)
+});
+
+export default connect(null)(Controls);

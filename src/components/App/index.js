@@ -8,7 +8,7 @@ import Controls from '../../containers/Controls'
 function App() {
 
 const grabTossups = async () => {
-  const response = await fetch('http://localhost:3000/api/v1/tossups/22&18/8/100');
+  const response = await fetch('http://localhost:3000/api/v1/tossups/22&18/100');
   console.log('response', response)
   if (!response.ok) {
     throw Error('Error fetching tossups')
