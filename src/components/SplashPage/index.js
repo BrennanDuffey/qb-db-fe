@@ -23,9 +23,7 @@ class SplashPage extends Component {
         <p>
           Please on the next page simply select from the dropdowns on the next page to choose what material you would like to cover. From there select quiz to show each question then it's answer one at a time, or select study to display all the questions and answers together on one page.
         </p>
-        <Link>
-          <h2 onClick={this.setContinue}>Continue</h2>
-        </Link>
+        <h2 onClick={this.setContinue}>Continue</h2>
       </section>
     );
   };
