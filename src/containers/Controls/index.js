@@ -3,8 +3,10 @@ import Select from 'react-select';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { connect } from 'react-redux';
 import { Redirect } from "react-router-dom";
+import ReactLoading from 'react-loading';
 import { fetchWithOptions, fetchWithCount } from '../../utils/apiCalls/apiCalls';
 import { setTossups, toggleLoading } from '../../actions'
+
 
 const categories = [
   { label: 'Geography', value: 20 },
@@ -52,27 +54,32 @@ export class Controls extends Component {
     try {
       let result;
       const { count, selectedCategories } = this.state;
-      // destructure props
-      this.props.toggleLoading();
+      const { setTossups, toggleLoading } = this.props
+      toggleLoading();
       if (selectedCategories.length) {
         result = await fetchWithOptions(count, selectedCategories);
       } else {
         result = await fetchWithCount(count);
       }
-      this.props.setTossups(result.tossups);
-      this.props.toggleLoading();
+      setTossups(result.tossups);
+      toggleLoading();
       await this.setState({ redirect: e.target.name })
     } catch(error) {
-      this.props.toggleLoading();
+      toggleLoading();
       this.setState({ errorMessage: error.message})
     }
   }
 
   render() {
+    const { isLoading } = this.props
 
-    if (this.state.redirect) {
+    if(this.state.redirect) {
       const route = `/${this.state.redirect}`;
       return <Redirect to={route}/>
+    }
+
+    if(this.state.errorMessage) {
+      return <h1>{this.state.errorMessage}</h1>
     }
 
     return (
@@ -100,6 +107,7 @@ export class Controls extends Component {
             name="Study"
           >Study!</button>
         </div>
+        { isLoading && <ReactLoading type={'spokes'} color={'black'} height={'50%'} width={'50%'} className='loading'/> }
       </section>
     )
   };
@@ -110,4 +118,8 @@ export const mapDispatchToProps = (dispatch) => ({
   toggleLoading: () => dispatch(toggleLoading())
 });
 
-export default connect(null, mapDispatchToProps)(Controls);
+export const mapStateToProps = (state) => ({
+  isLoading: state.isLoading
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Controls);
