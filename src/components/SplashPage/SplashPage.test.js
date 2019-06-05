@@ -17,4 +17,10 @@ describe('Card', () => {
   it('should have correct default state', () => {
     expect(wrapper.state('continue')).toEqual(false);
   });
+
+  it('should be able to update state to true', () => {
+    expect(wrapper.state('continue')).toEqual(false);
+    wrapper.instance().setContinue();
+    expect(wrapper.state('continue')).toEqual(true);
+  });
 });
