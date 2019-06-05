@@ -16,8 +16,8 @@ describe('tossupsReducer', () => {
   });
 
   it('should be able to update state', () => {
-    const expected = false;
-    const result = tossupsReducer(true, actions.setTossups());
+    const expected = [mockTossup];
+    const result = tossupsReducer(mockTossups, actions.setTossups([mockTossup]));
     expect(result).toEqual(expected);
   });
 });
