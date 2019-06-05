@@ -1,9 +1,10 @@
 .controls-section {
   width: 40%;
-  .category-controls {
+  font-size: 1.25rem;
+  .filter-controls {
     display: flex;
     flex-direction: column;
-    align-items: left;
+    margin-top: 25px;
     p {
       transform: translate(-10%);
       margin-bottom: 0;
@@ -23,6 +24,7 @@
       padding: 10px 20px;
       background-color: rgba(0, 0, 0, .1); 
       border-radius: 5px;
+      font-size: 1.5rem;
     }
   }
 }
