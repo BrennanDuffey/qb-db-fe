@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from "react-router-dom";
+import PropTypes from "prop-types";
 
 
 export class QuizContainer extends Component {
@@ -34,11 +35,11 @@ export class QuizContainer extends Component {
       return <Redirect to={'/Controls'}/>
     }
     return (
-      <section>
-        {!displayAnswer && <div dangerouslySetInnerHTML={this.createMarkup(tossups[questionCounter].formatted_text)} />}
-        {!displayAnswer && <h3 onClick={this.toggleDisplay}>Show Answer </h3>}
-        {displayAnswer && <div dangerouslySetInnerHTML={this.createMarkup(tossups[questionCounter].formatted_answer)} />}
-        {displayAnswer && <h3 onClick={() => {this.incrementCounter()}}>Next Question</h3>}
+      <section className="quiz-card">
+        {!displayAnswer && <div className="quiz-text" dangerouslySetInnerHTML={this.createMarkup(tossups[questionCounter].formatted_text)} />}
+        {!displayAnswer && <h3 className="quiz-button" onClick={this.toggleDisplay}>Show Answer </h3>}
+        {displayAnswer && <div className="quiz-text" dangerouslySetInnerHTML={this.createMarkup(tossups[questionCounter].formatted_answer)} />}
+        {displayAnswer && <h3 className="quiz-button" onClick={() => {this.incrementCounter()}}>Next Question</h3>}
       </section>
     )
   }
@@ -47,5 +48,13 @@ export class QuizContainer extends Component {
 export const mapStateToProps = (state) => ({
   tossups: state.tossups
 });
+
+QuizContainer.propTypes = {
+  dispatch: PropTypes.func,
+  history: PropTypes.object,
+  location: PropTypes.object,
+  match: PropTypes.object,
+  tossups: PropTypes.array
+}
 
 export default connect(mapStateToProps)(QuizContainer)

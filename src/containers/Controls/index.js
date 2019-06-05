@@ -6,6 +6,8 @@ import { Redirect } from "react-router-dom";
 import ReactLoading from 'react-loading';
 import { fetchWithOptions, fetchWithCount } from '../../utils/apiCalls/apiCalls';
 import { setTossups, toggleLoading } from '../../actions'
+import PropTypes from "prop-types";
+
 
 
 const categories = [
@@ -83,21 +85,26 @@ export class Controls extends Component {
     }
 
     return (
-      <section>
-        <div className="container">
-          <div className="row">
-            <div className="col-md-4"></div>
-            <div className="col-md-4">
-              <Select options={ categories } isMulti onChange={(e) => {this.selectCategories(e)}} />
+      <section className="controls-section">
+        <div className="filter-controls">
+          <div className="category-controls">
+            <p>Categories</p>
+            <div className="container">
+              <div className="row">
+                <div className="col-md-4"></div>
+                <div className="col-md-4">
+                  <Select placeholder='All' options={ categories } isMulti onChange={(e) => {this.selectCategories(e)}} />
+                </div>
+                <div className="col-md-4"></div>
+              </div>
             </div>
-            <div className="col-md-4"></div>
+          </div>
+          <div className='count-controls'>
+            <label htmlFor="count">Select A Number of Questions</label>
+            <input name="count" type="number" placeholder=" Default of 15" onChange={(e) => {this.setCount(e)}}/>
           </div>
         </div>
-        <div>
-          <label htmlFor="count">Select A Number of Questions</label>
-          <input name="count" type="number" placeholder=" Default of 15" onChange={(e) => {this.setCount(e)}}/>
-        </div>
-        <div>
+        <div className='buttons'>
           <button 
             onClick={ (e) => {this.fetchTossups(e)} }
             name="Quiz"
@@ -120,6 +127,15 @@ export const mapDispatchToProps = (dispatch) => ({
 
 export const mapStateToProps = (state) => ({
   isLoading: state.isLoading
-})
+});
+
+Controls.propTypes = {
+  history: PropTypes.object,
+  isLoading: PropTypes.bool,
+  location: PropTypes.object,
+  match: PropTypes.object,
+  setTossups: PropTypes.func,
+  toggleLoading: PropTypes.func
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Controls);
