@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import { Redirect } from "react-router-dom";
 import Card from '../../components/Card';
 
-function StudyContainer({ tossups }) {
+export function StudyContainer({ tossups }) {
   const cards = tossups.map(tossup => {
-    return <Card {...tossup}/>
-  })
+    return <Card {...tossup} key={tossup.id}/>
+  });
 
   if (!tossups.length) {
     return <Redirect to={'/Controls'}/>
