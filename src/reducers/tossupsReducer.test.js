@@ -10,14 +10,14 @@ describe('tossupsReducer', () => {
   });
 
   it('should be able to update state from default', () => {
-    const expected = true;
-    const result = tossupsReducer(false, actions.toggleLoading());
+    const expected = mockTossups;
+    const result = tossupsReducer([], actions.setTossups(mockTossups));
     expect(result).toEqual(expected);
   });
 
   it('should be able to update state', () => {
     const expected = false;
-    const result = tossupsReducer(true, actions.toggleLoading());
+    const result = tossupsReducer(true, actions.setTossups());
     expect(result).toEqual(expected);
   });
 });
