@@ -32,8 +32,11 @@ Once everything is installed in both folders, in the back-end folder, run `npm s
   - Final Project Screenshots
   
 <img width="583" alt="splash page" src="https://github.com/BrennanDuffey/qb-db-fe/blob/master/src/images/SplashPage.png">
-<img width="583" alt="image" src="https://i.postimg.cc/BQwkwsrf/localhost-3002-3.png">
-<img width="583" alt="image" src="https://i.postimg.cc/t4YD1xvL/localhost-3002-1.png">
+<img width="583" alt="controls page 1" src="https://github.com/BrennanDuffey/qb-db-fe/blob/master/src/images/Controls_1.png">
+<img width="583" alt="controls page 2" src="https://github.com/BrennanDuffey/qb-db-fe/blob/master/src/images/Controls_2.png">
+<img width="583" alt="quiz page" src="https://github.com/BrennanDuffey/qb-db-fe/blob/master/src/images/Quiz.png">
+<img width="583" alt="study page" src="https://github.com/BrennanDuffey/qb-db-fe/blob/master/src/images/Study.png">
+<img width="583" alt="404 page" src="https://github.com/BrennanDuffey/qb-db-fe/blob/master/src/images/404_Page.png">
 
 
 
@@ -42,10 +45,11 @@ Once everything is installed in both folders, in the back-end folder, run `npm s
 Further knowledge on the following technologies/principles:
 
 - React
+- Router
 - Redux
-- Jest and Enzyme Testing
+- Thunks
 - Node.js
-- SuperTest
+- Jest and Enzyme Testing
 - Asynchronous Testing
 - JSX
 - Prop-Types
@@ -62,4 +66,4 @@ Created by:
 
 ## Improvements
 
-- https://github.com/NimSum/trapper-keeper/issues
+- https://github.com/BrennanDuffey/qb-db-fe/issues
