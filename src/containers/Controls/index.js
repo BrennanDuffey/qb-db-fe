@@ -3,8 +3,7 @@ import Select from 'react-select';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { connect } from 'react-redux';
 import { Redirect } from "react-router-dom";
-import fetchWithOptions from '../../utils/apiCalls/fetchWithOptions';
-import fetchWithCount from '../../utils/apiCalls/fetchWithCount';
+import { fetchWithOptions, fetchWithCount } from '../../utils/apiCalls/apiCalls';
 import { setTossups, toggleLoading } from '../../actions'
 
 const categories = [
@@ -60,8 +59,8 @@ export class Controls extends Component {
       } else {
         result = await fetchWithCount(count);
       }
-      await this.props.setTossups(result.tossups);
-      await this.props.toggleLoading();
+      this.props.setTossups(result.tossups);
+      this.props.toggleLoading();
       await this.setState({ redirect: e.target.name })
     } catch(error) {
       this.props.toggleLoading();

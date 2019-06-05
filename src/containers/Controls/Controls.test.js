@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 import { shallow } from 'enzyme';
 import { Controls } from '../Controls';
 import { mockCategories, mockTossups } from '../../utils/mockData';
-import fetchWithOptions from '../../utils/apiCalls/fetchWithOptions';
-import fetchWithCount from '../../utils/apiCalls/fetchWithCount';
+import { fetchWithOptions, fetchWithCount } from '../../utils/apiCalls/apiCalls';
 
-jest.mock('../../utils/apiCalls/fetchWithOptions');
-jest.mock('../../utils/apiCalls/fetchWithCount');
+jest.mock('../../utils/apiCalls/apiCalls');
 
 describe('Controls', () => {
   describe('Controls component', () => {
@@ -16,8 +14,8 @@ describe('Controls', () => {
     let mockSetTossups;
 
     beforeAll(() => {
-      fetchWithOptions.mockImplementation(() => mockTossups);
-      fetchWithCount.mockImplementation(() => mockTossups);
+      fetchWithOptions.mockImplementation(() => { tossups: mockTossups});
+      fetchWithCount.mockImplementation(() => { tossups: mockTossups});
     })
 
     beforeEach(() => {
@@ -62,10 +60,14 @@ describe('Controls', () => {
       expect(wrapper.state('count')).toEqual('25');
     });
 
-    it('should call toggleLoading when fetchTossups is invoked', () => {
-      wrapper.instance().fetchTossups(mockEvent);
-
+    it('should call toggleLoading when fetchTossups is invoked', async () => {
+      await wrapper.instance().fetchTossups(mockEvent);
+      expect(mockToggleLoading).toHaveBeenCalled();
     });
 
+    it('should call setTossup when fetchTossups is invoked', async () => {
+      await wrapper.instance().fetchTossups(mockEvent);
+      expect(mockSetTossups).toHaveBeenCalled();
+    })
   });
 });
