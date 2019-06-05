@@ -38,9 +38,7 @@ class QuizContainer extends Component {
         {!displayAnswer && <div dangerouslySetInnerHTML={this.createMarkup(tossups[questionCounter].formatted_text)} />}
         {!displayAnswer && <h3 onClick={this.toggleDisplay}>Show Answer </h3>}
         {displayAnswer && <div dangerouslySetInnerHTML={this.createMarkup(tossups[questionCounter].formatted_answer)} />}
-        {displayAnswer && <h3 onClick={() => {this.incrementCounter()}}>Next Question</h3>
-        }
-
+        {displayAnswer && <h3 onClick={() => {this.incrementCounter()}}>Next Question</h3>}
       </section>
     )
   }
