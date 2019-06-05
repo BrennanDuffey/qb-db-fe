@@ -51,9 +51,9 @@ export class Controls extends Component {
     e.preventDefault();
     e.persist();
     try {
-      await this.props.toggleLoading();
-      const { count, selectedCategories } = this.state;
       let result;
+      const { count, selectedCategories } = this.state;
+      await this.props.toggleLoading();
       if (selectedCategories.length) {
         result = await fetchWithOptions(count, selectedCategories);
       } else {

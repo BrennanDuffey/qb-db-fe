@@ -6,8 +6,14 @@ import { mockCategories } from '../../utils/mockData';
 describe('Controls', () => {
   describe('Controls component', () => {
     let wrapper;
+    let MockEvent;
 
     beforeEach(() => {
+      mockEvent = { 
+        target: { value: '25' }, 
+        persist: jest.fn(),
+        preventDefault: jest.fn() 
+      }
       wrapper = shallow(<Controls />);
     });
 
@@ -33,11 +39,12 @@ describe('Controls', () => {
     });
 
     it('should update the count in state correctly', () => {
-      const mockEvent = { target: { value: '25' }, persist: jest.fn() }
       const expected = '25';
       expect(wrapper.state('count')).toEqual(15);
       wrapper.instance().setCount(mockEvent);
       expect(wrapper.state('count')).toEqual('25');
     });
+
+    
   });
 });
