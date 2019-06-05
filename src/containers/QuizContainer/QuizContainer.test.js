@@ -18,8 +18,12 @@ describe('QuizContainer', () => {
       expect(wrapper).toMatchSnapshot();
     });
 
-    it('should render to match snapshot', () => {
-
+    it('should have a default state', () => {
+      const expected = {
+        questionCounter: 0,
+        displayAnswer: false
+      };
+      expect(wrapper.state()).toEqual(expected)
     });
 
     it('should render to match snapshot', () => {
