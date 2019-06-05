@@ -3,8 +3,7 @@ export const fetchWithCount = async (count) => {
   if(!response.ok) {
     throw Error('Hmm something went wrong please refresh the page')
   }
-  const result = await response.json();
-  return result
+  return response.json();
 }
 
 export const fetchWithOptions = async (count, selectedCategories) => {
@@ -13,6 +12,5 @@ export const fetchWithOptions = async (count, selectedCategories) => {
   if(!response.ok) {
     throw Error('Hmm something went wrong please refresh the page')
   }
-  const result = await response.json();
-  return result
+  return response.json();
 }
