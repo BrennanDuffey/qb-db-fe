@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { shallow } from 'enzyme';
-import { Controls } from '../Controls';
+import { Controls, mapStateToProps, mapDispatchToProps } from '../Controls';
 import { mockCategories, mockTossups } from '../../utils/mockData';
+import * as actions from '../../actions';
 
 jest.mock('../../utils/apiCalls/apiCalls');
 
@@ -78,9 +79,33 @@ describe('Controls', () => {
     });
   });
 
-  describe('mapDispatchToProps', () => {
-    it('should do some things', () => {
+  describe('mapStateToProps', () => {
+    it('Should return an object with an isLoading property', () => {
+      const mockState = { tossups: mockTossups, isLoading: false };
+      const expected = { isLoading: false };
+      const mappedProps = mapStateToProps(mockState);
+      expect(mappedProps).toEqual(expected);
+    });
+  });
 
+  describe('mapDispatchToProps', () => {
+    let mockDispatch;
+    beforeEach(() => {
+      mockDispatch = jest.fn();
+    });
+
+    it('calls dispatch with setTossups action when setTossups is called', () => {
+      const actionToDispatch = actions.setTossups(mockTossups);
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      mappedProps.setTossups(mockTossups);
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    });
+
+    it('calls dispatch with toggleLoading action when toggleLoading is called', () => {
+      const actionToDispatch = actions.toggleLoading();
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      mappedProps.toggleLoading();
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
     });
   });
 });
