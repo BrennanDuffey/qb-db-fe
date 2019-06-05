@@ -15,7 +15,7 @@ export function StudyContainer({ tossups }) {
   }
 
   return (
-    <section>
+    <section className="study-container">
       {cards}
     </section>
   )

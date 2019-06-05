@@ -9,9 +9,11 @@ function Card(props) {
   }
 
   return (
-    <article>
-      <div dangerouslySetInnerHTML={createMarkup(props.formatted_text)} />
-      <div dangerouslySetInnerHTML={createMarkup(props.formatted_answer)} />
+    <article className="study-card">
+      <h4>Tossup:</h4>
+      <div className="study-question" dangerouslySetInnerHTML={createMarkup(props.formatted_text)} />
+      <h5>Answer:</h5>
+      <div className="study-answer" dangerouslySetInnerHTML={createMarkup(props.formatted_answer)} />
     </article>
   )
 }
