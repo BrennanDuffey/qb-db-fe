@@ -31,7 +31,7 @@ Once everything is installed in both folders, in the back-end folder, run `npm s
 
   - Final Project Screenshots
   
-<img width="660" alt="splash page" src="https://github.com/BrennanDuffey/qb-db-fe/blob/master/src/images/SplashPage.png">
+<img width="100%" alt="splash page" src="https://github.com/BrennanDuffey/qb-db-fe/blob/master/src/images/SplashPage.png">
 <img width="660" alt="controls page 1" src="https://github.com/BrennanDuffey/qb-db-fe/blob/master/src/images/Controls_1.png">
 <img width="660" alt="controls page 2" src="https://github.com/BrennanDuffey/qb-db-fe/blob/master/src/images/Controls_2.png">
 <img width="660" alt="quiz page" src="https://github.com/BrennanDuffey/qb-db-fe/blob/master/src/images/Quiz.png">
