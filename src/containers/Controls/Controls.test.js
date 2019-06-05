@@ -13,5 +13,15 @@ describe('Controls', () => {
     it('should match snapshot', () => {
       expect(wrapper).toMatchSnapshot();
     });
+
+    it('should have a default state', () => {
+      const mockDefaultState = {
+        selectedCategories: [],
+        count: 15,
+        redirect: '',
+        errorMessage: ''
+      };
+      expect(wrapper.state()).toEqual(mockDefaultState);
+    });
   });
 });
