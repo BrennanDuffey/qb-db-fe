@@ -78,6 +78,10 @@ export class Controls extends Component {
       return <Redirect to={route}/>
     }
 
+    if(this.state.errorMessage) {
+      return <h1>{this.state.errorMessage}</h1>
+    }
+
     return (
       <section>
         <div className="container">
