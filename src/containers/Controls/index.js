@@ -6,6 +6,8 @@ import { Redirect } from "react-router-dom";
 import ReactLoading from 'react-loading';
 import { fetchWithOptions, fetchWithCount } from '../../utils/apiCalls/apiCalls';
 import { setTossups, toggleLoading } from '../../actions'
+import PropTypes from "prop-types";
+
 
 
 const categories = [
@@ -120,6 +122,15 @@ export const mapDispatchToProps = (dispatch) => ({
 
 export const mapStateToProps = (state) => ({
   isLoading: state.isLoading
-})
+});
+
+Controls.propTypes = {
+  history: PropTypes.object,
+  isLoading: PropTypes.bool,
+  location: PropTypes.object,
+  match: PropTypes.object,
+  setTossups: PropTypes.func,
+  toggleLoading: PropTypes.func
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Controls);

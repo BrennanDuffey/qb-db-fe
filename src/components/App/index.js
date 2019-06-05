@@ -4,6 +4,8 @@ import SplashPage from '../SplashPage';
 import Controls from '../../containers/Controls';
 import QuizContainer from '../../containers/QuizContainer';
 import StudyContainer from '../../containers/StudyContainer';
+import PropTypes from "prop-types";
+
 
 
 
@@ -18,5 +20,7 @@ function App() {
     </main>
   );
 }
+
+App.propTypes = {};
 
 export default App;

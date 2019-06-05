@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
+import PropTypes from "prop-types";
+
 
 class SplashPage extends Component {
   constructor() {
@@ -28,5 +30,11 @@ class SplashPage extends Component {
     );
   };
 };
+
+SplashPage.propTypes = {
+  history: PropTypes.object,
+  location: PropTypes.object,
+  match: PropTypes.object
+}
 
 export default SplashPage

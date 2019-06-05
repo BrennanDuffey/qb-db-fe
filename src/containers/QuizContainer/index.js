@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from "react-router-dom";
+import PropTypes from "prop-types";
 
 
 export class QuizContainer extends Component {
@@ -47,5 +48,13 @@ export class QuizContainer extends Component {
 export const mapStateToProps = (state) => ({
   tossups: state.tossups
 });
+
+QuizContainer.propTypes = {
+  dispatch: PropTypes.func,
+  history: PropTypes.object,
+  location: PropTypes.object,
+  match: PropTypes.object,
+  tossups: PropTypes.array
+}
 
 export default connect(mapStateToProps)(QuizContainer)
