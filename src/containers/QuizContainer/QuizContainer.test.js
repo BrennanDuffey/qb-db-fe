@@ -43,6 +43,11 @@ describe('QuizContainer', () => {
       wrapper.instance().toggleDisplay();
       expect(wrapper.state('displayAnswer')).toEqual(true);
     });
+
+    it('should render correctly when displayAnswer is toggled', () => {
+      wrapper.instance().toggleDisplay();
+      expect(wrapper).toMatchSnapshot();
+    });
   });
 
   describe('mapStateToProps', () => {
