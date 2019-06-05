@@ -68,13 +68,19 @@ describe('Controls', () => {
 
     it('should call setTossup when fetchTossups is invoked', async () => {
       await wrapper.instance().fetchTossups(mockEvent);
-      expect(mockSetTossups).toHaveBeenCalled();
+      expect(mockSetTossups).toHaveBeenCalledWith(mockTossups);
     });
 
     it('should alter state of redirect when fetchTossups is called', async () => {
       expect(wrapper.state('redirect')).toEqual('');
       await wrapper.instance().fetchTossups(mockEvent);
       expect(wrapper.state('redirect')).toEqual('Quiz');
+    });
+  });
+
+  describe('mapDispatchToProps', () => {
+    it('should do some things', () => {
+
     });
   });
 });

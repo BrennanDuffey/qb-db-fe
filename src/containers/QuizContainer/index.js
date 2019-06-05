@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Redirect } from "react-router-dom";
 
 
-class QuizContainer extends Component {
+export class QuizContainer extends Component {
   constructor() {
     super();
     this.state = {
