@@ -53,7 +53,7 @@ export class Controls extends Component {
       let result;
       const { count, selectedCategories } = this.state;
       // destructure props
-      await this.props.toggleLoading();
+      this.props.toggleLoading();
       if (selectedCategories.length) {
         result = await fetchWithOptions(count, selectedCategories);
       } else {

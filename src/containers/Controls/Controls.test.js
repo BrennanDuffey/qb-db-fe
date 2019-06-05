@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { shallow } from 'enzyme';
 import { Controls } from '../Controls';
 import { mockCategories, mockTossups } from '../../utils/mockData';
-import { fetchWithOptions, fetchWithCount } from '../../utils/apiCalls/apiCalls';
 
 jest.mock('../../utils/apiCalls/apiCalls');
+
+import { fetchWithOptions, fetchWithCount } from '../../utils/apiCalls/apiCalls';
 
 describe('Controls', () => {
   describe('Controls component', () => {
@@ -14,21 +15,21 @@ describe('Controls', () => {
     let mockSetTossups;
 
     beforeAll(() => {
-      fetchWithOptions.mockImplementation(() => { tossups: mockTossups});
-      fetchWithCount.mockImplementation(() => { tossups: mockTossups});
-    })
+      fetchWithOptions.mockImplementation(() => { return { tossups: mockTossups}});
+      fetchWithCount.mockImplementation(() => { return { tossups: mockTossups}});
+    });
 
     beforeEach(() => {
       mockEvent = { 
-        target: { value: '25' }, 
+        target: { value: '25', name:'Quiz' }, 
         persist: jest.fn(),
         preventDefault: jest.fn() 
       }
       mockToggleLoading = jest.fn();
       mockSetTossups = jest.fn();
       wrapper = shallow(<Controls 
-        toggleLoading={mockToggleLoading}
         setTossups={mockSetTossups}
+        toggleLoading={mockToggleLoading}
       />);
     });
 
@@ -68,6 +69,12 @@ describe('Controls', () => {
     it('should call setTossup when fetchTossups is invoked', async () => {
       await wrapper.instance().fetchTossups(mockEvent);
       expect(mockSetTossups).toHaveBeenCalled();
-    })
+    });
+
+    it('should alter state of redirect when fetchTossups is called', async () => {
+      expect(wrapper.state('redirect')).toEqual('');
+      await wrapper.instance().fetchTossups(mockEvent);
+      expect(wrapper.state('redirect')).toEqual('Quiz');
+    });
   });
 });
