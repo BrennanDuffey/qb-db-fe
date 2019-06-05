@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`QuizContainer QuizContainer Component should render correctly when displayAnswer is toggled 1`] = `ShallowWrapper {}`;
+
+exports[`QuizContainer QuizContainer Component should render to match snapshot 1`] = `ShallowWrapper {}`;
