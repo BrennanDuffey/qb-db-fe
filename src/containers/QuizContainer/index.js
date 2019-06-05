@@ -22,6 +22,10 @@ class QuizContainer extends Component {
     this.setState({ displayAnswer: !this.state.displayAnswer })
   }
 
+  createMarkup(text) {
+    return {__html: text}
+  }
+
 
   render() {
     const { tossups } = this.props
@@ -31,9 +35,9 @@ class QuizContainer extends Component {
     }
     return (
       <section>
-        {!displayAnswer && <p>{tossups[questionCounter].text}</p>}
+        {!displayAnswer && <div dangerouslySetInnerHTML={this.createMarkup(tossups[questionCounter].formatted_text)} />}
         {!displayAnswer && <h3 onClick={this.toggleDisplay}>Show Answer </h3>}
-        {displayAnswer && <p>{tossups[questionCounter].answer}</p>}
+        {displayAnswer && <div dangerouslySetInnerHTML={this.createMarkup(tossups[questionCounter].formatted_answer)} />}
         {displayAnswer && <h3 onClick={() => {this.incrementCounter()}}>Next Question</h3>
         }
 

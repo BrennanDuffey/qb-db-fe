@@ -21,11 +21,11 @@ const grabTossups = async () => {
 
   return (
     <main className="">
+      <button onClick={grabTossups}>Stuff </button>
       <Route exact path='/' component={SplashPage} />
       <Route exact path='/Controls' component={Controls} />
       <Route exact path='/Quiz' component={QuizContainer} />
       <Route exact path='/Study' component={StudyContainer} />
-      <button onClick={grabTossups}>Stuff </button>
     </main>
   );
 }
