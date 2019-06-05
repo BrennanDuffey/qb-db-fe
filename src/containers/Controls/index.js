@@ -20,7 +20,7 @@ const categories = [
   { label: 'Social Science', value: 22 }
 ];
 
-class Controls extends Component {
+export class Controls extends Component {
   constructor() {
     super();
     this.state = {
