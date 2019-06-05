@@ -26,12 +26,22 @@ describe('QuizContainer', () => {
       expect(wrapper.state()).toEqual(expected)
     });
 
-    it('should render to match snapshot', () => {
-
+    it('should set new state with incrementCounter', () => {
+      expect(wrapper.state('questionCounter')).toEqual(0);
+      wrapper.instance().incrementCounter();
+      expect(wrapper.state('questionCounter')).toEqual(1);
     });
 
-    it('should render to match snapshot', () => {
+    it.skip('should call toggleDisplay with incrementCounter', async () => {
+      wrapper.toggleDisplay = jest.fn();
+      await wrapper.instance().incrementCounter();
+      expect(wrapper.toggleDisplay).toHaveBeenCalled();
+    });
 
+    it('should update state with toggleDisplay', () => {
+      expect(wrapper.state('displayAnswer')).toEqual(false);
+      wrapper.instance().toggleDisplay();
+      expect(wrapper.state('displayAnswer')).toEqual(true);
     });
   });
 
