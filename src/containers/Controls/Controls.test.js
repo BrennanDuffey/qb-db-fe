@@ -31,5 +31,13 @@ describe('Controls', () => {
       wrapper.instance().selectCategories(mockCategories);
       expect(wrapper.state('selectedCategories')).toEqual(expected);
     });
+
+    it('should update the count in state correctly', () => {
+      const mockEvent = { target: { value: '25' }, persist: jest.fn() }
+      const expected = '25';
+      expect(wrapper.state('count')).toEqual(15);
+      wrapper.instance().setCount(mockEvent);
+      expect(wrapper.state('count')).toEqual('25');
+    });
   });
 });
