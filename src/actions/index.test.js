@@ -22,6 +22,5 @@ describe('actions', () => {
       const result = actions.toggleLoading();
       expect(result).toEqual(expected);
     });
-
   });
 });
