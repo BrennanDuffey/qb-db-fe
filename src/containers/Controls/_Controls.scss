@@ -1,0 +1,28 @@
+.controls-section {
+  width: 40%;
+  .category-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    p {
+      transform: translate(-10%);
+      margin-bottom: 0;
+    }
+  }
+  .count-controls {
+    display: flex;
+    flex-direction: column;
+    width: 30.3%;
+    margin: 34px auto;
+  }
+  .buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 100px;
+    button {
+      padding: 10px 20px;
+      background-color: rgba(0, 0, 0, .1); 
+      border-radius: 5px;
+    }
+  }
+}
