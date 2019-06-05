@@ -1,2 +1,8 @@
 @import './normalize';
-
+@import './components/App/App';
+@import './components/Card/Card';
+@import './components/PageNotFound/PageNotFound';
+@import './components/SplashPage/SplashPage';
+@import './containers/Controls/Controls';
+@import './containers/QuizContainer/QuizContainer';
+@import './containers/StudyContainer/StudyContainer';

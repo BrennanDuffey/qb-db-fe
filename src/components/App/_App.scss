@@ -1,0 +1,40 @@
+
+.app {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  header {
+    background-color: rgba(0, 0, 0, .1);
+    border-bottom: solid 1px rgba(0, 0, 0, .15);
+    display: flex;
+  }
+  .nav {
+    text-decoration: none;
+    color: black;
+    padding: 10px 15px 5px;
+    border-bottom: solid 2px rgba(0, 0, 0, .1);
+    &:hover {
+      border-bottom: solid 2px rgba(0, 0, 0, .4);
+    }
+  }
+  section {
+    padding: 20px 0;
+    width: 80%;
+    margin: 0 auto;
+    h2 {
+      background-color: rgba(0, 0, 0, .1);
+      padding: 10px;
+      border: solid 1px rgba(0, 0, 0, .15);
+      border-radius: 12px;
+      &:hover {
+        border: solid 1px rgba(0, 0, 0, .25);
+        background-color: rgba(0, 0, 0, .2);
+      }
+    }
+  }
+}
+
+main {
+  text-align: center;
+}
