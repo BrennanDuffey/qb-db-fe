@@ -87,4 +87,17 @@ export const mockTossup = {
   },
   "subcategory": {
   }
-}
+};
+
+export const mockCategories = [
+  { label: 'Geography', value: 20 },
+  { label: 'History', value: 18 },
+  { label: 'Science', value: 17 },
+  { label: 'Literature', value: 15 },
+  { label: 'Fine Arts', value: 21 },
+  { label: 'Religion', value: 19 },
+  { label: 'Mythology', value: 14 },
+  { label: 'Philosophy', value: 25 },
+  { label: 'Current Events', value: 26 },
+  { label: 'Social Science', value: 22 }
+];

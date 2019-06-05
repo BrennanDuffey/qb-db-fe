@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { shallow } from 'enzyme';
 import { Controls } from '../Controls';
+import { mockCategories } from '../../utils/mockData';
 
 describe('Controls', () => {
   describe('Controls component', () => {
@@ -22,6 +23,13 @@ describe('Controls', () => {
         errorMessage: ''
       };
       expect(wrapper.state()).toEqual(mockDefaultState);
+    });
+
+    it('should update state correctly when selectCategories is invoked', () => {
+      const expected = [ '20', '18', '17', '15', '21', '19', '14', '25', '26', '22'];
+      expect(wrapper.state('selectedCategories')).toEqual([]);
+      wrapper.instance().selectCategories(mockCategories);
+      expect(wrapper.state('selectedCategories')).toEqual(expected);
     });
   });
 });
