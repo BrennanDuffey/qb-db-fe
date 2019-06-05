@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, NavLink } from 'react-router-dom';
 import SplashPage from '../SplashPage';
 import PageNotFound from '../PageNotFound';
 import Controls from '../../containers/Controls';
@@ -12,8 +12,13 @@ import PropTypes from "prop-types";
 
 function App() {
   return (
-    <main className="">
-      <button>Stuff </button>
+    <main className="app">
+      <div className='header-section'>
+        <header>
+          <NavLink to='/' className='nav'>Home</NavLink>
+          <NavLink to='/Controls' className='nav'>Controls</NavLink>
+        </header>
+      </div>
       <Switch>
         <Route exact path='/' component={SplashPage} />
         <Route exact path='/Controls' component={Controls} />
