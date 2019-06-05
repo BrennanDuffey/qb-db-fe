@@ -25,6 +25,6 @@ describe('App', () => {
         <App />
       </BrowserRouter>
     );
-    expect(wrapper).toMatchSnapshot()
+    expect(wrapper).toMatchSnapshot();
   });
 });
