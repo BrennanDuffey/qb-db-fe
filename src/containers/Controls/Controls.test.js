@@ -1,12 +1,24 @@
 import React, { Component } from 'react';
 import { shallow } from 'enzyme';
 import { Controls } from '../Controls';
-import { mockCategories } from '../../utils/mockData';
+import { mockCategories, mockTossups } from '../../utils/mockData';
+import fetchWithOptions from '../../utils/apiCalls/fetchWithOptions';
+import fetchWithCount from '../../utils/apiCalls/fetchWithCount';
+
+jest.mock('../../utils/apiCalls/fetchWithOptions');
+jest.mock('../../utils/apiCalls/fetchWithCount');
 
 describe('Controls', () => {
   describe('Controls component', () => {
     let wrapper;
-    let MockEvent;
+    let mockEvent;
+    let mockToggleLoading;
+    let mockSetTossups;
+
+    beforeAll(() => {
+      fetchWithOptions.mockImplementation(() => mockTossups);
+      fetchWithCount.mockImplementation(() => mockTossups);
+    })
 
     beforeEach(() => {
       mockEvent = { 
@@ -14,7 +26,12 @@ describe('Controls', () => {
         persist: jest.fn(),
         preventDefault: jest.fn() 
       }
-      wrapper = shallow(<Controls />);
+      mockToggleLoading = jest.fn();
+      mockSetTossups = jest.fn();
+      wrapper = shallow(<Controls 
+        toggleLoading={mockToggleLoading}
+        setTossups={mockSetTossups}
+      />);
     });
 
     it('should match snapshot', () => {
@@ -45,6 +62,10 @@ describe('Controls', () => {
       expect(wrapper.state('count')).toEqual('25');
     });
 
-    
+    it('should call toggleLoading when fetchTossups is invoked', () => {
+      wrapper.instance().fetchTossups(mockEvent);
+
+    });
+
   });
 });
